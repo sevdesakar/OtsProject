@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ots.Api", "Ots.Api\Ots.Api.csproj", "{82768D15-F833-45D5-B6FF-857BA8969753}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ots.Base", "..\Ots.Base\Ots.Base.csproj", "{1B10DC32-2605-49BF-9979-13E4613A2138}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ots.Schema", "..\Ots.Schema\Ots.Schema.csproj", "{3B96E530-BFC4-48C6-AFD8-707E10FCFC53}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{82768D15-F833-45D5-B6FF-857BA8969753}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82768D15-F833-45D5-B6FF-857BA8969753}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82768D15-F833-45D5-B6FF-857BA8969753}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B10DC32-2605-49BF-9979-13E4613A2138}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B10DC32-2605-49BF-9979-13E4613A2138}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B10DC32-2605-49BF-9979-13E4613A2138}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B10DC32-2605-49BF-9979-13E4613A2138}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B96E530-BFC4-48C6-AFD8-707E10FCFC53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B96E530-BFC4-48C6-AFD8-707E10FCFC53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B96E530-BFC4-48C6-AFD8-707E10FCFC53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B96E530-BFC4-48C6-AFD8-707E10FCFC53}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
