@@ -10,11 +10,11 @@ public class Customer : BaseEntity
 {
     public string Email { get; set; }
     public string FirstName { get; set; }
+    public string? MiddleName { get; set; }
     public string LastName { get; set; }
     public string IdentityNumber { get; set; }
     public int CustomerNumber { get; set; }
     public DateTime OpenDate { get; set; }
-
     public virtual List<CustomerAddress> CustomerAddresses { get; set; }
     public virtual List<CustomerPhone> CustomerPhones { get; set; }
     public virtual List<Account> Accounts { get; set; }
@@ -35,6 +35,7 @@ public class CustomerConfiguration : IEntityTypeConfiguration<Customer>
 
         builder.Property(x => x.Email).IsRequired().HasMaxLength(100);
         builder.Property(x => x.FirstName).IsRequired().HasMaxLength(100);
+        builder.Property(x => x.MiddleName).IsRequired(false).HasMaxLength(100);
         builder.Property(x => x.LastName).IsRequired().HasMaxLength(100);
         builder.Property(x => x.IdentityNumber).IsRequired().HasMaxLength(11);
         builder.Property(x => x.CustomerNumber).IsRequired();
@@ -46,7 +47,7 @@ public class CustomerConfiguration : IEntityTypeConfiguration<Customer>
 
         builder.HasMany(x => x.Accounts)
             .WithOne(x => x.Customer)
-            .HasForeignKey(x => x.CustomerId).IsRequired(true);
+            .HasForeignKey(x => x.CustomerId).IsRequired(true).OnDelete(DeleteBehavior.NoAction);
 
         builder.HasMany(x => x.CustomerPhones)
             .WithOne(x => x.Customer)
