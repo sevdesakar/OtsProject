@@ -198,7 +198,6 @@ namespace Ots.Api.Migrations.PostgreSql
                         .HasColumnType("character varying(100)");
 
                     b.Property<string>("MiddleName")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)");
 
@@ -475,7 +474,7 @@ namespace Ots.Api.Migrations.PostgreSql
                     b.HasOne("Ots.Api.Domain.Customer", "Customer")
                         .WithMany("Accounts")
                         .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Customer");

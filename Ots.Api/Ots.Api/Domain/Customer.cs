@@ -43,15 +43,15 @@ public class CustomerConfiguration : IEntityTypeConfiguration<Customer>
 
         builder.HasMany(x => x.CustomerAddresses)
             .WithOne(x => x.Customer)
-            .HasForeignKey(x => x.CustomerId).IsRequired(true);
+            .HasForeignKey(x => x.CustomerId).IsRequired(true).OnDelete(DeleteBehavior.Cascade);
 
         builder.HasMany(x => x.Accounts)
             .WithOne(x => x.Customer)
-            .HasForeignKey(x => x.CustomerId).IsRequired(true).OnDelete(DeleteBehavior.NoAction);
+            .HasForeignKey(x => x.CustomerId).IsRequired(true).OnDelete(DeleteBehavior.Cascade);
 
         builder.HasMany(x => x.CustomerPhones)
             .WithOne(x => x.Customer)
-            .HasForeignKey(x => x.CustomerId).IsRequired(true);
+            .HasForeignKey(x => x.CustomerId).IsRequired(true).OnDelete(DeleteBehavior.Cascade);
 
         builder.HasIndex(x => x.CustomerNumber).IsUnique(true);
     }
