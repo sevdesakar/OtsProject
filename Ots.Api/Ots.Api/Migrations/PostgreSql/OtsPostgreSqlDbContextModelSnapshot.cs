@@ -332,6 +332,139 @@ namespace Ots.Api.Migrations.PostgreSql
                     b.ToTable("CustomerPhone", "dbo");
                 });
 
+            modelBuilder.Entity("Ots.Api.Domain.EftTransaction", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<decimal>("Amount")
+                        .HasPrecision(16, 4)
+                        .HasColumnType("numeric(16,4)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)");
+
+                    b.Property<decimal?>("FeeAmount")
+                        .HasPrecision(16, 4)
+                        .HasColumnType("numeric(16,4)");
+
+                    b.Property<long>("FromAccountId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("InsertedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("InsertedUser")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("character varying(250)");
+
+                    b.Property<bool>("IsActive")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(true);
+
+                    b.Property<string>("PaymentCategoryCode")
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
+
+                    b.Property<string>("ReceiverName")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)");
+
+                    b.Property<string>("ReferenceNumber")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
+
+                    b.Property<string>("ReveiverIban")
+                        .IsRequired()
+                        .HasMaxLength(26)
+                        .HasColumnType("character varying(26)");
+
+                    b.Property<DateTime>("TransactionDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("UpdatedUser")
+                        .HasMaxLength(250)
+                        .HasColumnType("character varying(250)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FromAccountId");
+
+                    b.ToTable("EftTransaction", "dbo");
+                });
+
+            modelBuilder.Entity("Ots.Api.Domain.MoneyTransfer", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<decimal>("Amount")
+                        .HasPrecision(16, 4)
+                        .HasColumnType("numeric(16,4)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)");
+
+                    b.Property<decimal?>("FeeAmount")
+                        .HasPrecision(16, 4)
+                        .HasColumnType("numeric(16,4)");
+
+                    b.Property<long>("FromAccountId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("InsertedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("InsertedUser")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("character varying(250)");
+
+                    b.Property<bool>("IsActive")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(true);
+
+                    b.Property<string>("ReferenceNumber")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
+
+                    b.Property<long>("ToAccountId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("TransactionDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("UpdatedUser")
+                        .HasMaxLength(250)
+                        .HasColumnType("character varying(250)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MoneyTransfer", "dbo");
+                });
+
             modelBuilder.Entity("Ots.Api.Domain.Account", b =>
                 {
                     b.HasOne("Ots.Api.Domain.Customer", "Customer")
