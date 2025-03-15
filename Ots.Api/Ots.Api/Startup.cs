@@ -1,4 +1,6 @@
+using System.Reflection;
 using Microsoft.EntityFrameworkCore;
+using Ots.Api.Impl.Cqrs;
 
 namespace Ots.Api;
 
@@ -18,6 +20,8 @@ public class Startup
 
         services.AddDbContext<OtsMsSqlDbContext>(options => { options.UseSqlServer(connectionStringMsSql); });
         services.AddDbContext<OtsPostgreSqlDbContext>(options => { options.UseNpgsql(connectionStringPostgresql); });
+
+        services.AddMediatR(x=> x.RegisterServicesFromAssemblies(typeof(CreateCustomerCommand).GetTypeInfo().Assembly));
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
