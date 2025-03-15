@@ -37,5 +37,6 @@ public class ReadWriteController : ControllerBase
     [HttpDelete("{id}")]
     public void Delete([FromRoute] int id)
     {
+        
     }
 }
