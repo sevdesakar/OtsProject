@@ -2,6 +2,8 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Ots.Api.Domain;
 using Ots.Api.Impl.Cqrs;
+using Ots.Base;
+using Ots.Schema;
 
 namespace Ots.Api.Controllers;
 
@@ -18,7 +20,7 @@ public class CustomersController : ControllerBase
 
 
     [HttpGet("GetAll")]
-    public async Task<List<Customer>> GetAll()
+    public async Task<ApiResponse<List<CustomerResponse>>> GetAll()
     {
         var operation = new GetAllCustomersQuery();
         var result = await mediator.Send(operation);
@@ -26,7 +28,7 @@ public class CustomersController : ControllerBase
     }
 
     [HttpGet("GetById/{id}")]
-    public async Task<Customer> GetByIdAsync([FromRoute] int id)
+    public async Task<ApiResponse<CustomerResponse>> GetByIdAsync([FromRoute] int id)
     {
         var operation = new GetCustomerByIdQuery(id);
         var result = await mediator.Send(operation);
@@ -34,7 +36,7 @@ public class CustomersController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<Customer> Post([FromBody] Customer customer)
+    public async Task<ApiResponse<CustomerResponse>> Post([FromBody] CustomerRequest customer)
     {
         var operation = new CreateCustomerCommand(customer);
         var result = await mediator.Send(operation);
@@ -42,14 +44,14 @@ public class CustomersController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<Customer> Put([FromRoute] int id, [FromBody] Customer customer)
+    public async Task<ApiResponse> Put([FromRoute] int id, [FromBody] CustomerRequest customer)
     {
         var operation = new UpdateCustomerCommand(id,customer);
         var result = await mediator.Send(operation);
         return result;
     }
     [HttpDelete("{id}")]
-    public async Task<Customer> Delete([FromRoute] int id)
+    public async Task<ApiResponse> Delete([FromRoute] int id)
     {
         var operation = new DeleteCustomerCommand(id);
         var result = await mediator.Send(operation);

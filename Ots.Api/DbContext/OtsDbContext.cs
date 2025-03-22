@@ -2,9 +2,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Ots.Api;
 
-public class OtsMsSqlDbContext : DbContext
+public class OtsDbContext : DbContext
 {
-    public OtsMsSqlDbContext(DbContextOptions<OtsMsSqlDbContext> options) : base(options)
+    public OtsDbContext(DbContextOptions<OtsDbContext> options) : base(options)
     {
 
     }
@@ -12,8 +12,7 @@ public class OtsMsSqlDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        // load all configurations
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(OtsMsSqlDbContext).Assembly);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(OtsDbContext).Assembly);
         // modelBuilder.ApplyConfiguration(new AccountConfiguration());
         base.OnModelCreating(modelBuilder);
     }

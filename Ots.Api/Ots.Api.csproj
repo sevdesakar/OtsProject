@@ -10,12 +10,11 @@
         <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>
-        <PackageReference Include="MediatR" Version="12.0.0" />
-        <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0"/>
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Ots.Base\Ots.Base.csproj" />
+      <ProjectReference Include="..\Ots.Schema\Ots.Schema.csproj" />
     </ItemGroup>
 
 </Project>

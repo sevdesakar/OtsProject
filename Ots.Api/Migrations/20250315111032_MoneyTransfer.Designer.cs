@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Ots.Api;
@@ -11,10 +12,12 @@ using Ots.Api;
 
 namespace Ots.Api.Migrations.MsSql
 {
-    [DbContext(typeof(OtsMsSqlDbContext))]
-    partial class OtsMsSqlDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(OtsDbContext))]
+    [Migration("20250315111032_MoneyTransfer")]
+    partial class MoneyTransfer
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -198,10 +201,6 @@ namespace Ots.Api.Migrations.MsSql
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("MiddleName")
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 

@@ -12,9 +12,9 @@ using Ots.Api;
 
 namespace Ots.Api.Migrations.MsSql
 {
-    [DbContext(typeof(OtsMsSqlDbContext))]
-    [Migration("20250315112335_MiddleName")]
-    partial class MiddleName
+    [DbContext(typeof(OtsDbContext))]
+    [Migration("20250315113911_Cascade")]
+    partial class Cascade
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -205,7 +205,6 @@ namespace Ots.Api.Migrations.MsSql
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("MiddleName")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
@@ -486,7 +485,7 @@ namespace Ots.Api.Migrations.MsSql
                     b.HasOne("Ots.Api.Domain.Customer", "Customer")
                         .WithMany("Accounts")
                         .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Customer");
