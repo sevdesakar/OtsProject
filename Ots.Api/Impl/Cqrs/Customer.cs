@@ -1,5 +1,4 @@
 using MediatR;
-using Ots.Api.Domain;
 using Ots.Base;
 using Ots.Schema;
 

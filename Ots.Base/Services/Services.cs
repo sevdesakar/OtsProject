@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace Ots.Base;
 
 public class SingletonService
@@ -14,7 +9,6 @@ public class ScopedService
 {
     public int Counter;
 }
-
 
 public class TransientService
 {

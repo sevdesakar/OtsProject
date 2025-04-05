@@ -37,7 +37,6 @@ IRequestHandler<DeleteCustomerCommand, ApiResponse>
         return new ApiResponse();
     }
 
-
     public async Task<ApiResponse> Handle(UpdateCustomerCommand request, CancellationToken cancellationToken)
     {
         var entity = await dbContext.Set<Customer>().FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
@@ -70,6 +69,7 @@ IRequestHandler<DeleteCustomerCommand, ApiResponse>
         var entity = await dbContext.AddAsync(mapped, cancellationToken);
         await dbContext.SaveChangesAsync(cancellationToken);
         var response = mapper.Map<CustomerResponse>(entity.Entity);
+
         return new ApiResponse<CustomerResponse>(response);
     }
 }

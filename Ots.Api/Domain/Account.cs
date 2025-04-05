@@ -19,6 +19,7 @@ public class Account : BaseEntity
     public DateTime OpenDate { get; set; }
     public DateTime? CloseDate { get; set; }
 
+    public virtual List<EftTransaction> EftTransactions { get; set; }
     public virtual List<AccountTransaction> AccountTransactions { get; set; }
 }
 
@@ -45,6 +46,10 @@ public class AccountConfiguration : IEntityTypeConfiguration<Account>
         builder.Property(x => x.CloseDate).IsRequired(true);
 
         builder.HasMany(x => x.AccountTransactions)
+            .WithOne(x => x.Account)
+            .HasForeignKey(x => x.AccountId).IsRequired(true).OnDelete(DeleteBehavior.Cascade);
+
+        builder.HasMany(x => x.EftTransactions)
             .WithOne(x => x.Account)
             .HasForeignKey(x => x.AccountId).IsRequired(true).OnDelete(DeleteBehavior.Cascade);
 
