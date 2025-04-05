@@ -43,7 +43,7 @@ public class AccountConfiguration : IEntityTypeConfiguration<Account>
         builder.Property(x => x.Balance).IsRequired().HasPrecision(18,2);
         builder.Property(x => x.CurrencyCode).IsRequired().HasMaxLength(3);
         builder.Property(x => x.OpenDate).IsRequired();
-        builder.Property(x => x.CloseDate).IsRequired(true);
+        builder.Property(x => x.CloseDate).IsRequired(false);
 
         builder.HasMany(x => x.AccountTransactions)
             .WithOne(x => x.Account)
