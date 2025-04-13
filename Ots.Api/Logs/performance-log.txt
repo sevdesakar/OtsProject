@@ -1,0 +1,6 @@
+﻿namespace Ots.Api.Logs
+{
+    public class performance_log
+    {
+    }
+}

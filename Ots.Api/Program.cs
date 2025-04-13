@@ -1,3 +1,5 @@
+using Ots.Api.Impl.PerformanceTest;
+
 namespace Ots.Api;
 
 public class Program
@@ -9,5 +11,13 @@ public class Program
 
     public static IHostBuilder CreateHostBuilder(string[] args) =>
         Host.CreateDefaultBuilder(args)
-            .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
+            .ConfigureWebHostDefaults(webBuilder =>
+            {
+                webBuilder.ConfigureServices(services =>
+                {
+                    services.AddControllers();
+                    services.AddScoped<InsertPerformanceTester>(); 
+                });
+                webBuilder.UseStartup<Startup>(); 
+            });
 }

@@ -65,6 +65,7 @@ IRequestHandler<DeleteCustomerCommand, ApiResponse>
         mapped.InsertedUser = "test";
         mapped.CustomerNumber = new Random().Next(1000000, 999999999);
         mapped.IsActive = true;
+      
 
         var entity = await dbContext.AddAsync(mapped, cancellationToken);
         await dbContext.SaveChangesAsync(cancellationToken);

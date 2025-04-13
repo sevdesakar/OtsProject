@@ -1,0 +1,3 @@
+Foreach ile tek tek ekleme süresi: 13,8936897 saniye
+AddRange ile toplu ekleme süresi: 11,2001032 saniye
+Bulk Insert ile toplu ekleme süresi: 10,4486216 saniye

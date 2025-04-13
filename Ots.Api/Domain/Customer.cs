@@ -45,10 +45,6 @@ public class CustomerConfiguration : IEntityTypeConfiguration<Customer>
             .WithOne(x => x.Customer)
             .HasForeignKey(x => x.CustomerId).IsRequired(true).OnDelete(DeleteBehavior.Cascade);
 
-        //builder.HasMany(x => x.Accounts)
-        //    .WithOne(x => x.Customer)
-        //    .HasForeignKey(x => x.CustomerId).IsRequired(true).OnDelete(DeleteBehavior.Cascade);
-
         builder.HasMany(x => x.CustomerPhones)
             .WithOne(x => x.Customer)
             .HasForeignKey(x => x.CustomerId).IsRequired(true).OnDelete(DeleteBehavior.Cascade);
