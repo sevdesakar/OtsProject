@@ -9,7 +9,7 @@ using Ots.Api;
 
 #nullable disable
 
-namespace Ots.Api.Migrations.MsSql
+namespace Ots.Api.Migrations
 {
     [DbContext(typeof(OtsDbContext))]
     partial class OtsDbContextModelSnapshot : ModelSnapshot

@@ -17,7 +17,7 @@ public class Customer : BaseEntity
     public DateTime OpenDate { get; set; }
     public virtual List<CustomerAddress> CustomerAddresses { get; set; }
     public virtual List<CustomerPhone> CustomerPhones { get; set; }
-    public virtual List<Account> Accounts { get; set; }
+   // public virtual List<Account> Accounts { get; set; }
 }
 
 public class CustomerConfiguration : IEntityTypeConfiguration<Customer>
@@ -45,9 +45,9 @@ public class CustomerConfiguration : IEntityTypeConfiguration<Customer>
             .WithOne(x => x.Customer)
             .HasForeignKey(x => x.CustomerId).IsRequired(true).OnDelete(DeleteBehavior.Cascade);
 
-        builder.HasMany(x => x.Accounts)
-            .WithOne(x => x.Customer)
-            .HasForeignKey(x => x.CustomerId).IsRequired(true).OnDelete(DeleteBehavior.Cascade);
+        //builder.HasMany(x => x.Accounts)
+        //    .WithOne(x => x.Customer)
+        //    .HasForeignKey(x => x.CustomerId).IsRequired(true).OnDelete(DeleteBehavior.Cascade);
 
         builder.HasMany(x => x.CustomerPhones)
             .WithOne(x => x.Customer)

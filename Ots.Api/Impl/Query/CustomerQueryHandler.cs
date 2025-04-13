@@ -32,7 +32,7 @@ IRequestHandler<GetCustomerByIdQuery, ApiResponse<CustomerResponse>>
         var customer = await context.Set<Customer>()
            .Include(x => x.CustomerAddresses)
            .Include(x => x.CustomerPhones)
-           .Include(x => x.Accounts)
+          // .Include(x => x.Accounts)
            .FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
 
         var mapped = mapper.Map<CustomerResponse>(customer);

@@ -10,11 +10,11 @@ using Ots.Api;
 
 #nullable disable
 
-namespace Ots.Api.Migrations.MsSql
+namespace Ots.Api.Migrations
 {
     [DbContext(typeof(OtsDbContext))]
-    [Migration("20250315113911_Cascade")]
-    partial class Cascade
+    [Migration("20250411210106_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,7 +43,6 @@ namespace Ots.Api.Migrations.MsSql
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime?>("CloseDate")
-                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<string>("CurrencyCode")
@@ -354,6 +353,9 @@ namespace Ots.Api.Migrations.MsSql
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
+                    b.Property<long>("AccountId")
+                        .HasColumnType("bigint");
+
                     b.Property<decimal>("Amount")
                         .HasPrecision(16, 4)
                         .HasColumnType("decimal(16,4)");
@@ -366,9 +368,6 @@ namespace Ots.Api.Migrations.MsSql
                     b.Property<decimal?>("FeeAmount")
                         .HasPrecision(16, 4)
                         .HasColumnType("decimal(16,4)");
-
-                    b.Property<long>("FromAccountId")
-                        .HasColumnType("bigint");
 
                     b.Property<DateTime>("InsertedDate")
                         .HasColumnType("datetime2");
@@ -414,7 +413,7 @@ namespace Ots.Api.Migrations.MsSql
 
                     b.HasKey("Id");
 
-                    b.HasIndex("FromAccountId");
+                    b.HasIndex("AccountId");
 
                     b.ToTable("EftTransaction", "dbo");
                 });
@@ -524,9 +523,22 @@ namespace Ots.Api.Migrations.MsSql
                     b.Navigation("Customer");
                 });
 
+            modelBuilder.Entity("Ots.Api.Domain.EftTransaction", b =>
+                {
+                    b.HasOne("Ots.Api.Domain.Account", "Account")
+                        .WithMany("EftTransactions")
+                        .HasForeignKey("AccountId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Account");
+                });
+
             modelBuilder.Entity("Ots.Api.Domain.Account", b =>
                 {
                     b.Navigation("AccountTransactions");
+
+                    b.Navigation("EftTransactions");
                 });
 
             modelBuilder.Entity("Ots.Api.Domain.Customer", b =>

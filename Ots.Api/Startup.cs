@@ -3,7 +3,7 @@ using AutoMapper;
 using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using Ots.Api.Impl.Cqrs;
-using Ots.Api.Impl.Service;
+//using Ots.Api.Impl.Service;
 using Ots.Api.Impl.Validation;
 using Ots.Api.Mapper;
 using Ots.Api.Middleware;
@@ -37,7 +37,7 @@ public class Startup
         services.AddTransient<TransientService>();
         services.AddSingleton<SingletonService>();
 
-        services.AddScoped<IAccountService, AccountService>();
+       // services.AddScoped<IAccountService, AccountService>();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

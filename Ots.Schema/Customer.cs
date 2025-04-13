@@ -23,5 +23,5 @@ public class CustomerResponse : BaseResponse
 
     public virtual List<CustomerAddressResponse> CustomerAddresses { get; set; }
     public virtual List<CustomerPhoneResponse> CustomerPhones { get; set; }
-    public virtual List<AccountResponse> Accounts { get; set; }
+  //  public virtual List<AccountResponse> Accounts { get; set; }
 }
